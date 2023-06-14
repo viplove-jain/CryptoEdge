@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import MyRoutes from "./Myroutes";
 import { makeStyles } from 'tss-react/mui';
 import Footer from "./components/Footer";
+import Alert from "./components/Alert";
 
 function App() {
   const useStyles = makeStyles()(() => {
@@ -26,6 +27,7 @@ const { classes } = useStyles();
         <Footer />
         
       </div>
+      <Alert />
     </BrowserRouter>
   );
 }

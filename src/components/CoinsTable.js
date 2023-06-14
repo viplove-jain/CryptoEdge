@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { CoinList } from '../config/api';
-import axios from 'axios';
 import { CryptoState } from '../CryptoContext';
 import { ThemeProvider, StyledEngineProvider, createTheme} from '@mui/material/styles';
 import { LinearProgress, TableBody, TableRow } from '@mui/material';
@@ -14,32 +12,11 @@ export function numberWithCommas(x) {
 }
 
 const CoinsTable = () => {
-    const [coins,setCoins] = useState([]);
-    const [loading,setLoading] = useState(false);
     const [search,setSearch] = useState();
     const [page, setPage] = useState(1);
     
-    const { currency,symbol } = CryptoState();
-
-    const fetchCoins = async () => {
-      try {
-        setLoading(true);
-        const { data } = await axios.get(CoinList(currency));
-        // console.log(data);
-        console.log('vidit is here');
-        setCoins(data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Request failed:', error.message);
-        if (error.response) {
-          console.error('Response data:', error.response.data);
-          console.error('Response status:', error.response.status);
-          console.error('Response headers:', error.response.headers);
-        }
-        setLoading(false);
-      }
-    };
-    
+    const { currency,symbol,coins,loading,fetchCoins } = CryptoState();
+ 
     useEffect(() => {
         fetchCoins();
     }, [currency])

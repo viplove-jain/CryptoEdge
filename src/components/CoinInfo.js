@@ -24,7 +24,7 @@ const CoinInfo = ({ coin }) => {
   const [flag,setflag] = useState(false);
 
   const useStyles = makeStyles()((theme) => ({
-    
+     
     container: {
       width: "75%",
       display: "flex",
